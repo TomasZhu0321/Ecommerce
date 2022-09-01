@@ -8,6 +8,7 @@ import {
   ProductsPage,
   SingleProductPage,
   CheckoutPage,
+  ErrorPage,
 } from "./pages";
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
           <CheckoutPage />
         </Route>
         <Route path="*" >
-          <HomePage />
+          <ErrorPage />
         </Route>
       </Switch>
       <Footer />
