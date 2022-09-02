@@ -21,12 +21,19 @@ const initialState = {
 const ProductsContext = createContext();
 export const ProductsProvider =({children})=>{
   const [state,dispatch] = useReducer(reducer, initialState);
+
   const openSideBar =()=>{
     dispatch({type:SIDEBAR_OPEN});
   }
   const closeSideBar =()=>{
     dispatch({type:SIDEBAR_CLOSE});
   }
+  const fetchProducts = async(url)=>{
+    const res = axios.get(url);
+    console.log(res);
+  }
+  useEffect(()=>{fetchProducts(url)},[]);
+
   return(
     <ProductsContext.Provider value={{...state, openSideBar, closeSideBar}}>
       {children}
@@ -39,25 +46,4 @@ export const useProductsContext=()=>{
     useContext(ProductsContext)
   )
 }
-// const ProductsContext = createContext();
 
-// export const ProductsProvider = ({ children }) => {
-//   const [state,dispatch] = useReducer(reducer,initialState);
-//   const openSideBar = () =>{
-//     dispatch({type:SIDEBAR_OPEN})
-//   }
-//   const closeSideBar = () =>{
-//     dispatch({type:SIDEBAR_CLOSE})
-//   }
-//   return (
-//     <ProductsContext.Provider value={{...state,openSideBar,closeSideBar}}>
-//       {children}
-//       </ProductsContext.Provider>
-//   );
-// };
-
-// export const useProductsContext=()=>{
-//   return (
-//     useContext(ProductsContext)
-//   )
-// }
