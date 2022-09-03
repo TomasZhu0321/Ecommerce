@@ -41,10 +41,55 @@ const SingleProductPage = () => {
   if (err) {
     return <Error />;
   }
+  const {
+    name,
+    price,
+    description,
+    stock,
+    stars,
+    reviews,
+    id: sku,
+    company,
+    images,
+  } = product;
+  console.log(name);
 
   return (
     <Wrapper>
-      <h3>single page</h3>
+      <PageHero title={name} product></PageHero>
+      <div className="section section-center page">
+        <Link to="/products" className="btn">
+          BACK TO PRODUCTS
+        </Link>
+        <div className="product-center">
+          <ProductImages></ProductImages>
+          <section className="content">
+            <h2>{name}</h2>
+            <Stars />
+            <h5 className="price">{formatPrice(price)}</h5>
+            <p className="desc">{description}</p>
+            <p className="info">
+              <span>Available : </span>
+              {stock>0 ? 'in stock' : 'out of stock'}
+            </p>
+            <p className="info">
+              <span>SKU : </span>
+              {sku}
+            </p>
+            <p className="info">
+              <span>Brand : </span>
+              {company}
+            </p>
+            <hr></hr>
+            {stock>0 && <AddToCart />}
+          </section>
+        </div>
+        
+      </div>
+
+      <div>
+        <AddToCart />
+      </div>
     </Wrapper>
   );
 };
