@@ -52,7 +52,6 @@ const SingleProductPage = () => {
     company,
     images,
   } = product;
-  console.log(name);
 
   return (
     <Wrapper>
@@ -81,14 +80,9 @@ const SingleProductPage = () => {
               {company}
             </p>
             <hr></hr>
-            {stock>0 && <AddToCart />}
+            {stock> 0 && <AddToCart product={product}/>}
           </section>
         </div>
-        
-      </div>
-
-      <div>
-        <AddToCart />
       </div>
     </Wrapper>
   );

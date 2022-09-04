@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import styled, { useTheme } from "styled-components";
 
 const ProductImages = ({ image=[{url:''}] }) => {
+
   const [main, setMain] = useState(image[0]);
-  console.log(main)
   return (
     <Wrapper>
         <img src={main.url} className='main'></img>
