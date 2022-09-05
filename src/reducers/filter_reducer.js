@@ -12,15 +12,13 @@ import {
 
 const filter_reducer = (state, action) => {
   if (action.type === LOAD_PRODUCTS) {
-    let maxPrice = action.payload.map((product)=>{
-      product.price;
-    })
+    let maxPrice = action.payload.map((product) => product.price);
     maxPrice = Math.max(...maxPrice);
     return {
       ...state,
       all_products: [...action.payload],
       filtered_products: [...action.payload],
-      filters:{...state.filters,max_price:maxPrice,price:maxPrice}
+      filters: { ...state.filters, max_price: maxPrice, price: maxPrice },
     };
   }
   if (action.type === SET_LISTVIEW) {
@@ -36,22 +34,30 @@ const filter_reducer = (state, action) => {
     const { sort, filtered_products } = state;
     let temp = [...filtered_products];
     if (sort === "price-lowest") {
-      temp = temp.sort((a,b)=>a.price - b.price)
+      temp = temp.sort((a, b) => a.price - b.price);
     }
     if (sort === "price-highest") {
-      temp = temp.sort((a,b)=>b.price - a.price)
+      temp = temp.sort((a, b) => b.price - a.price);
     }
     if (sort === "name-a") {
       temp = temp.sort((a, b) => {
-        return a.name.localeCompare(b.name)
-      })
+        return a.name.localeCompare(b.name);
+      });
     }
     if (sort === "name-z") {
       temp = temp.sort((a, b) => {
-        return b.name.localeCompare(a.name)
-      })
+        return b.name.localeCompare(a.name);
+      });
     }
-    return {...state,filtered_products: temp}
+    return { ...state, filtered_products: temp };
+  }
+  if (action.type === UPDATE_FILTERS) {
+    const { name, value } = action.payload;
+    return { ...state, filters: { ...state.filters, [name]: value } };
+  }
+  if( action.type === FILTER_PRODUCTS){
+    console.log('filtering products')
+    return {...state}
   }
 
   throw new Error(`No Matching "${action.type}" - action type`);
