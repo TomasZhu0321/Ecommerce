@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import { Navbar, Sidebar, Footer } from "./components";
-
+import CartPage from "./pages/CartPage";
 import {
   HomePage,
   AboutPage,
@@ -10,6 +10,7 @@ import {
   CheckoutPage,
   ErrorPage,
 } from "./pages";
+
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route path="/checkout" exact>
           <CheckoutPage />
+        </Route>
+        <Route path="/cart" exact>
+          <CartPage />
         </Route>
         <Route path="*" >
           <ErrorPage />
