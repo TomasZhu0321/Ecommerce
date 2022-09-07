@@ -4,12 +4,14 @@ import ProductsPage from "./ProductsPage";
 import CheckoutPage from "./CheckoutPage";
 import SingleProductPage from "./SingleProductPage";
 import ErrorPage from './ErrorPage'
+import AuthWrapper from "./AuthWrapper";
 export {
     HomePage,
     AboutPage,
     ProductsPage,
     CheckoutPage,
     SingleProductPage,
-    ErrorPage
+    ErrorPage,
+    AuthWrapper
 
 }

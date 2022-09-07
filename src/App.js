@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import { Navbar, Sidebar, Footer } from "./components";
 import CartPage from "./pages/CartPage";
+import PrivateRoute from "./pages/PrivateRoute";
+
 import {
   HomePage,
   AboutPage,
@@ -9,11 +11,13 @@ import {
   SingleProductPage,
   CheckoutPage,
   ErrorPage,
+  AuthWrapper
 } from "./pages";
 
 
 function App() {
   return (
+    <AuthWrapper>
     <Router>
       <Navbar />
       <Sidebar />
@@ -29,9 +33,9 @@ function App() {
         </Route>
         <Route path="/products/:productId" children={<SingleProductPage/>} exact>
         </Route>
-        <Route path="/checkout" exact>
+        <PrivateRoute path="/checkout" exact>
           <CheckoutPage />
-        </Route>
+        </PrivateRoute>
         <Route path="/cart" exact>
           <CartPage />
         </Route>
@@ -41,6 +45,7 @@ function App() {
       </Switch>
       <Footer />
     </Router>
+    </AuthWrapper>
   );
 }
 
