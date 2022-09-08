@@ -8,10 +8,10 @@ const Hero = () => {
   return <Wrapper className="section-center">
       <article className="content">
         <h1>
-          Design Your <br /> Comfort Zone
+          Decorate your home  <br /> also your mind
         </h1>
         <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, at sed omnis corporis doloremque possimus velit! Repudiandae nisi odit, aperiam odio ducimus, obcaecati libero et quia tempora excepturi quis alias?
+        Furniture is often overlooked as a mundane feature of the home. But its resonance in our lives is much more profound ...
         </p>
         <Link to="/products" className="btn hero-btn">
           SHOP NOW
