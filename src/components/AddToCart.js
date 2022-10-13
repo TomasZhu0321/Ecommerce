@@ -21,7 +21,7 @@ const AddToCart = ({ product }) => {
   };
   const decrease = () => {
     setAmount((oldAmount)=>{
-      let tempAmount = oldAmount + 1;
+      let tempAmount = oldAmount - 1;
       if(tempAmount<1){
         tempAmount = 1;
       }

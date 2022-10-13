@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
 import { Navbar, Sidebar, Footer } from "./components";
 import CartPage from "./pages/CartPage";
 import PrivateRoute from "./pages/PrivateRoute";
@@ -21,28 +21,19 @@ function App() {
     <Router>
       <Navbar />
       <Sidebar />
-      <Switch>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
-        <Route path="/about" exact>
-          <AboutPage />
-        </Route>
-        <Route path="/products" exact>
-          <ProductsPage />
-        </Route>
-        <Route path="/products/:productId" children={<SingleProductPage/>} exact>
-        </Route>
-        <PrivateRoute path="/checkout" exact>
-          <CheckoutPage />
-        </PrivateRoute>
-        <Route path="/cart" exact>
-          <CartPage />
-        </Route>
-        <Route path="*" >
-          <ErrorPage />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<HomePage/>}/>
+        <Route path="about" element={<AboutPage/>}/>
+        <Route path="cart" element={<CartPage/>}/>
+        <Route path="products" element={<ProductsPage/>}/>
+        <Route path="products/:productId" element={<SingleProductPage/>}/>
+        <Route path="checkout" element={
+          <PrivateRoute>
+            <CheckoutPage />
+          </PrivateRoute>
+      }/>
+      <Route path="*" element={<ErrorPage />}/>
+      </Routes>
       <Footer />
     </Router>
     </AuthWrapper>
